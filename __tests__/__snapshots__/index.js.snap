@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`babel-plugin-split-styles Bail if \`css\` prop was used: Bail if \`css\` prop was used 1`] = `
+"
+<div css={{background: \\"blue\\"}} style={{color: \\"green\\"}} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+<div css={{
+  background: \\"blue\\"
+}} style={{
+  color: \\"green\\"
+}} />;
+"
+`;
+
+exports[`babel-plugin-split-styles Dynamic styles should stay in \`style\`: Dynamic styles should stay in \`style\` 1`] = `
+"
+<div style={{color: a ? \\"red\\" : \\"green\\"}} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+<div style={{
+  color: a ? \\"red\\" : \\"green\\"
+}} />;
+"
+`;
+
+exports[`babel-plugin-split-styles Extract static from dynamic: Extract static from dynamic 1`] = `
+"
+<div style={{background: \\"blue\\", color: a ? \\"red\\" : \\"green\\"}} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+<div css={{
+  background: \\"blue\\"
+}} style={{
+  color: a ? \\"red\\" : \\"green\\"
+}} />;
+"
+`;
+
+exports[`babel-plugin-split-styles Only static css: Only static css 1`] = `
+"
+<div style={{color: \\"green\\"}} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+<div css={{
+  color: \\"green\\"
+}} />;
+"
+`;

@@ -1,0 +1,33 @@
+{
+  "name": "babel-plugin-split-styles",
+  "version": "0.0.1",
+  "description": "Splitting dynamic and static styles into style and css prop.",
+  "main": "dist/index.js",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "dependencies": {
+    "babel-plugin-syntax-jsx": "^6.18.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.7.1",
+    "babel-plugin-tester": "^6.0.1",
+    "eslint": "^5.16.0",
+    "jest": "^24.7.1"
+  },
+  "scripts": {
+    "build": "babel src -d dist",
+    "test": "jest"
+  },
+  "author": "Fabrice Weinberg <Fabrice@weinberg.me>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FWeinb/babel-plugin-split-styles.git"
+  },
+  "license": "MIT"
+}
