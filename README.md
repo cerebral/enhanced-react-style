@@ -29,7 +29,7 @@ styled.div(({ disabled }) => ({
 Tools like Emotion exposes a custom pragma named **jsx** which allows you to use a **css** attribute on your components that are converted into classnames. The problem here is the tricky setup, especially with Typescript.
 
 ### Mental overhead
-Having to think about styles vs CSS is just a completely unnecessary overload. You should not be thinking about any of this at all. You should just style your components and everything is handled for you.
+Having to think about styles vs CSS is just a completely unnecessary overhead. You should not be thinking about any of this at all. You should just style your components and everything is handled for you.
 
 ## Emotion almost got us there
 The project [emotion.sh](https://emotion.sh) is pretty amazing, but through its iterations it is trying to do too many things. This library takes the increadible innovation made by Emotion to remove the overhead of thinking styles vs css, optimizing, server side rendering etc. It just works!
