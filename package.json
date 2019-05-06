@@ -4,6 +4,7 @@
   "description": "Splitting dynamic and static styles into style and css prop.",
   "main": "dist/index.js",
   "files": [
+    "index.d.ts",
     "src",
     "dist"
   ],
