@@ -46,6 +46,38 @@ exports[`babel-plugin-split-styles Extract static from dynamic: Extract static f
 "
 `;
 
+exports[`babel-plugin-split-styles Ignore bound jsx elements: Ignore bound jsx elements 1`] = `
+"
+const div = () => {}; <div style={{some: \\"other\\", stuff}} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+const div = () => {};
+
+<div style={{
+  some: \\"other\\",
+  stuff
+}} />;
+"
+`;
+
+exports[`babel-plugin-split-styles Ignore non identifier as element name: Ignore non identifier as element name 1`] = `
+"
+<animated.div style={{some: \\"other\\", stuff}} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+<animated.div style={{
+  some: \\"other\\",
+  stuff
+}} />;
+"
+`;
+
 exports[`babel-plugin-split-styles Only static css: Only static css 1`] = `
 "
 <div style={{color: \\"green\\"}} />

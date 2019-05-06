@@ -40,6 +40,15 @@ export default function(babel) {
     name: 'babel-plugin-split-styles',
     inherits: require('babel-plugin-syntax-jsx'),
     visitor: {
+      JSXOpeningElement(path) {
+        const isIdentifier = t.isJSXIdentifier(path.node.name);
+        const hasBinding =
+          isIdentifier && path.scope.hasBinding(path.node.name.name);
+
+        if (!isIdentifier || hasBinding) {
+          path.skip();
+        }
+      },
       JSXAttribute(path, state) {
         if (path.node.name.name !== 'style') {
           return;
