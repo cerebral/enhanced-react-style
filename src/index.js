@@ -1,20 +1,15 @@
 // Path is an object expression;
 function splitStaticAndDynamic(t, path) {
-  const dynamicStyle = t.objectExpression(
-    path.node.properties.filter(
-      node =>
+  const dynamicStyle = path.node.properties.filter(
+    node =>
+      t.isConditionalExpression(node.value) || t.isLogicalExpression(node.value)
+  );
+  const staticStyle = path.node.properties.filter(
+    node =>
+      !(
         t.isConditionalExpression(node.value) ||
         t.isLogicalExpression(node.value)
-    )
-  );
-  const staticStyle = t.objectExpression(
-    path.node.properties.filter(
-      node =>
-        !(
-          t.isConditionalExpression(node.value) ||
-          t.isLogicalExpression(node.value)
-        )
-    )
+      )
   );
   return {
     dynamicStyle,
@@ -50,16 +45,19 @@ export default function(babel) {
         }
       },
       JSXAttribute(path, state) {
-        if (path.node.name.name !== 'style') {
+        if (
+          !t.isObjectExpression(path.node.value.expression) ||
+          path.node.name.name !== 'style'
+        ) {
           return;
         }
 
-        // Bail out if css prop is used
-        // TODO: Might be possible to
-        // add static props to css props
-        if (
-          path.parentPath.node.attributes.some(node => node.name.name === 'css')
-        ) {
+        let cssProp = path.parentPath.node.attributes.find(
+          node => node.name.name === 'css'
+        );
+
+        // if there is a cssProp it must contain a objectExpression
+        if (cssProp && !t.isObjectExpression(cssProp.value.expression)) {
           return;
         }
 
@@ -72,19 +70,23 @@ export default function(babel) {
           if (extracted) {
             const { dynamicStyle, staticStyle } = extracted.styles;
 
-            if (dynamicStyle.properties.length === 0) {
+            if (dynamicStyle.length === 0) {
               path.remove();
             } else {
               // Replace all current styles with just the dynamic ones
-              extracted.path.replaceWith(dynamicStyle);
+              extracted.path.replaceWith(t.objectExpression(dynamicStyle));
             }
 
-            if (staticStyle.properties.length !== 0) {
-              const cssProp = t.jsxAttribute(
-                t.jsxIdentifier('css'),
-                t.jsxExpressionContainer(staticStyle)
-              );
-              path.parentPath.node.attributes.unshift(cssProp);
+            if (staticStyle.length !== 0) {
+              if (!cssProp) {
+                cssProp = t.jsxAttribute(
+                  t.jsxIdentifier('css'),
+                  t.jsxExpressionContainer(t.objectExpression([]))
+                );
+                path.parentPath.node.attributes.unshift(cssProp);
+              }
+
+              cssProp.value.expression.properties.push(...staticStyle);
             }
           }
         }

@@ -1,17 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`babel-plugin-split-styles Bail if \`css\` prop was used: Bail if \`css\` prop was used 1`] = `
+exports[`babel-plugin-split-styles Bail if \`css\` prop is not a object expression: Bail if \`css\` prop is not a object expression 1`] = `
 "
-<div css={{background: \\"blue\\"}} style={{color: \\"green\\"}} />
+<div css={other} style={{color: \\"green\\", background: a ? \\"red\\" : \\"green\\"}} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
 \\"use strict\\";
 
-<div css={{
-  background: \\"blue\\"
-}} style={{
-  color: \\"green\\"
+<div css={other} style={{
+  color: \\"green\\",
+  background: a ? \\"red\\" : \\"green\\"
 }} />;
 "
 `;
@@ -78,6 +77,23 @@ exports[`babel-plugin-split-styles Ignore non identifier as element name: Ignore
 "
 `;
 
+exports[`babel-plugin-split-styles Merge static styles into \`css\` prop: Merge static styles into \`css\` prop 1`] = `
+"
+<div css={{background: \\"blue\\"}} style={{color: \\"green\\", background: a ? \\"red\\" : \\"green\\"}} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+<div css={{
+  background: \\"blue\\",
+  color: \\"green\\"
+}} style={{
+  background: a ? \\"red\\" : \\"green\\"
+}} />;
+"
+`;
+
 exports[`babel-plugin-split-styles Only static css: Only static css 1`] = `
 "
 <div style={{color: \\"green\\"}} />
@@ -89,5 +105,17 @@ exports[`babel-plugin-split-styles Only static css: Only static css 1`] = `
 <div css={{
   color: \\"green\\"
 }} />;
+"
+`;
+
+exports[`babel-plugin-split-styles Should bail on non object expression: Should bail on non object expression 1`] = `
+"
+<div style={a} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+<div style={a} />;
 "
 `;
