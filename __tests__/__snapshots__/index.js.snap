@@ -1,20 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`babel-plugin-split-styles Bail if \`css\` prop is not a object expression: Bail if \`css\` prop is not a object expression 1`] = `
-"
-<div css={other} style={{color: \\"green\\", background: a ? \\"red\\" : \\"green\\"}} />
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-\\"use strict\\";
-
-<div css={other} style={{
-  color: \\"green\\",
-  background: a ? \\"red\\" : \\"green\\"
-}} />;
-"
-`;
-
 exports[`babel-plugin-split-styles Dynamic styles should stay in \`style\`: Dynamic styles should stay in \`style\` 1`] = `
 "
 <div style={{color: a ? \\"red\\" : \\"green\\"}} />
@@ -77,23 +62,6 @@ exports[`babel-plugin-split-styles Ignore non identifier as element name: Ignore
 "
 `;
 
-exports[`babel-plugin-split-styles Merge static styles into \`css\` prop: Merge static styles into \`css\` prop 1`] = `
-"
-<div css={{background: \\"blue\\"}} style={{color: \\"green\\", background: a ? \\"red\\" : \\"green\\"}} />
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-\\"use strict\\";
-
-<div css={{
-  background: \\"blue\\",
-  color: \\"green\\"
-}} style={{
-  background: a ? \\"red\\" : \\"green\\"
-}} />;
-"
-`;
-
 exports[`babel-plugin-split-styles Only static css: Only static css 1`] = `
 "
 <div style={{color: \\"green\\"}} />
@@ -108,6 +76,20 @@ exports[`babel-plugin-split-styles Only static css: Only static css 1`] = `
 "
 `;
 
+exports[`babel-plugin-split-styles Should bail if \`css\` property exists: Should bail if \`css\` property exists 1`] = `
+"
+<div css={{}} style={{background: \\"blue\\"}} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+<div css={{}} style={{
+  background: \\"blue\\"
+}} />;
+"
+`;
+
 exports[`babel-plugin-split-styles Should bail on non object expression: Should bail on non object expression 1`] = `
 "
 <div style={a} />
@@ -117,5 +99,24 @@ exports[`babel-plugin-split-styles Should bail on non object expression: Should 
 \\"use strict\\";
 
 <div style={a} />;
+"
+`;
+
+exports[`babel-plugin-split-styles Should work with nested object: Should work with nested object 1`] = `
+"
+<div style={{color: \\"green\\", \\"&\\": { \\":hover\\": { color: \\"blue\\"}}}} />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+<div css={{
+  color: \\"green\\",
+  \\"&\\": {
+    \\":hover\\": {
+      color: \\"blue\\"
+    }
+  }
+}} />;
 "
 `;

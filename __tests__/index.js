@@ -25,14 +25,8 @@ pluginTester({
       code: '<div style={{background: "blue", color: a ? "red" : "green"}} />'
     },
     {
-      title: 'Merge static styles into `css` prop',
-      code:
-        '<div css={{background: "blue"}} style={{color: "green", background: a ? "red" : "green"}} />'
-    },
-    {
-      title: 'Bail if `css` prop is not a object expression',
-      code:
-        '<div css={other} style={{color: "green", background: a ? "red" : "green"}} />'
+      title: 'Should bail if `css` property exists',
+      code: '<div css={{}} style={{background: "blue"}} />'
     },
     {
       title: 'Ignore bound jsx elements',
@@ -41,6 +35,11 @@ pluginTester({
     {
       title: 'Ignore non identifier as element name',
       code: '<animated.div style={{some: "other", stuff}} />'
+    },
+    {
+      title: 'Should work with nested object',
+      code:
+        '<div style={{color: "green", "&": { ":hover": { color: "blue"}}}} />'
     }
   ]
 });

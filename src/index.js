@@ -47,17 +47,9 @@ export default function(babel) {
       JSXAttribute(path, state) {
         if (
           !t.isObjectExpression(path.node.value.expression) ||
-          path.node.name.name !== 'style'
+          path.node.name.name !== 'style' ||
+          path.parent.attributes.some(node => node.name.name === 'css')
         ) {
-          return;
-        }
-
-        let cssProp = path.parentPath.node.attributes.find(
-          node => node.name.name === 'css'
-        );
-
-        // if there is a cssProp it must contain a objectExpression
-        if (cssProp && !t.isObjectExpression(cssProp.value.expression)) {
           return;
         }
 
@@ -78,15 +70,12 @@ export default function(babel) {
             }
 
             if (staticStyle.length !== 0) {
-              if (!cssProp) {
-                cssProp = t.jsxAttribute(
+              path.parentPath.node.attributes.unshift(
+                t.jsxAttribute(
                   t.jsxIdentifier('css'),
-                  t.jsxExpressionContainer(t.objectExpression([]))
-                );
-                path.parentPath.node.attributes.unshift(cssProp);
-              }
-
-              cssProp.value.expression.properties.push(...staticStyle);
+                  t.jsxExpressionContainer(t.objectExpression(staticStyle))
+                )
+              );
             }
           }
         }
