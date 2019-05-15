@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dynamic styles should stay in \`style\` 1`] = `
+"import { jsx as ___EmotionJSX } from \\"@emotion/core\\";
+
+___EmotionJSX(\\"div\\", {
+  style: {
+    color: a ? \\"red\\" : \\"green\\"
+  }
+});"
+`;
+
+exports[`Extract static from dynamic 1`] = `
+"import { jsx as ___EmotionJSX } from \\"@emotion/core\\";
+
+___EmotionJSX(\\"div\\", {
+  css: {
+    background: \\"blue\\"
+  },
+  style: {
+    color: a ? \\"red\\" : \\"green\\"
+  }
+});"
+`;
+
+exports[`Ignore bound jsx elements 1`] = `
+"import { jsx as ___EmotionJSX } from \\"@emotion/core\\";
+
+const div = () => {};
+
+___EmotionJSX(\\"div\\", {
+  style: {
+    some: \\"other\\",
+    stuff
+  }
+});"
+`;
+
+exports[`Ignore non identifier as element name 1`] = `
+"import { jsx as ___EmotionJSX } from \\"@emotion/core\\";
+
+___EmotionJSX(animated.div, {
+  style: {
+    some: \\"other\\",
+    stuff
+  }
+});"
+`;
+
+exports[`Only static css 1`] = `
+"import { jsx as ___EmotionJSX } from \\"@emotion/core\\";
+
+___EmotionJSX(\\"div\\", {
+  css: {
+    color: \\"green\\"
+  }
+});"
+`;
+
+exports[`Should bail if \`css\` property exists 1`] = `
+"import { jsx as ___EmotionJSX } from \\"@emotion/core\\";
+
+___EmotionJSX(\\"div\\", {
+  css: process.env.NODE_ENV === \\"production\\" ? {
+    name: \\"0\\",
+    styles: \\"\\"
+  } : {
+    name: \\"0\\",
+    styles: \\"\\",
+    map: \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVua25vd24iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUsiLCJmaWxlIjoidW5rbm93biIsInNvdXJjZXNDb250ZW50IjpbIjxkaXYgY3NzPXt7fX0gc3R5bGU9e3tiYWNrZ3JvdW5kOiBcImJsdWVcIn19IC8+Il19 */\\"
+  },
+  style: {
+    background: \\"blue\\"
+  }
+});"
+`;
+
+exports[`Should bail on non object expression 1`] = `
+"import { jsx as ___EmotionJSX } from \\"@emotion/core\\";
+
+___EmotionJSX(\\"div\\", {
+  style: a
+});"
+`;
+
+exports[`Should work with nested object 1`] = `
+"import { jsx as ___EmotionJSX } from \\"@emotion/core\\";
+
+___EmotionJSX(\\"div\\", {
+  css: {
+    color: \\"green\\",
+    \\"&\\": {
+      \\":hover\\": {
+        color: \\"blue\\"
+      }
+    }
+  }
+});"
+`;

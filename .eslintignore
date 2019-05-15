@@ -1,0 +1,12 @@
+**/build/
+**/bundle.js
+**/.cache/
+**/coverage/
+**/dist/
+**/es/
+**/generated/
+**/lib/
+**/*.min.js
+**/node_modules/
+**/vendor/
+*.d.ts

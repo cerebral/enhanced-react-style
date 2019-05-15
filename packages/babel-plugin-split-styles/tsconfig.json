@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "jsx": "react",
+    "reactNamespace": "JSX",
+    "rootDir": "src",
+    "newLine": "LF",
+    "lib": ["es6", "es7", "esnext", "dom"],
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "strictNullChecks": true,
+    "importHelpers": true,
+    "declaration": true,
+    "pretty": true,
+    "sourceMap": true,
+    "inlineSources": true
+  },
+  "exclude": ["node_modules", "dist", "es", "lib", "src/**/*.test.ts"]
+}

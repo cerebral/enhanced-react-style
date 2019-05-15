@@ -1,0 +1,58 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "jest": true,
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": [
+    "standard",
+    "standard-jsx",
+    "plugin:prettier/recommended",
+    "plugin:jest/recommended",
+    "prettier/react",
+    "prettier/standard",
+    "prettier/@typescript-eslint"
+  ],
+  "rules": {
+    "linebreak-style": ["error", "unix"]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint", "jsx"],
+      "rules": {
+        "jsx/uses-factory": [
+          1,
+          {
+            "pragma": "React"
+          }
+        ],
+        "jsx/factory-in-scope": [
+          1,
+          {
+            "pragma": "React"
+          }
+        ],
+        "import/export": "off",
+        "no-dupe-class-members": "off",
+        "no-empty-pattern": "off",
+        "no-inner-declarations": "off",
+        "no-redeclare": "off",
+        "no-undef": "off",
+        "no-unused-expressions": "off",
+        "no-unused-vars": "off",
+        "no-use-before-define": "off",
+        "no-useless-constructor": "off"
+      }
+    }
+  ]
+}

@@ -1,46 +1,6 @@
-# React styles
+# babel-plugin-split-styles
 
-This is a PROOF OF CONCEPT. It will be a babel preset using Emotion as a dependency to give a supersweet experience styling your apps.
-
-## What is it?
-
-CSS-IN-JSS libraries has come a long way to help you effectively define and isolate CSS. There are still some challenges though.
-
-### Differentiating dynamic and static styling
-
-Dynamic styling should really always be treated as inline styles. For example:
-
-```js
-styled.div(({ width }) => ({
-  width: width + 'px'
-}))
-```
-
-There are no limits to have many class names that might be produced.
-
-### Leaking props
-
-If you happen to send a property that is also an HTML attribute it will leak into the DOM.
-
-```js
-styled.div(({ disabled }) => ({}))
-```
-
-### Custom JSX pragma
-
-Tools like Emotion exposes a custom pragma named **jsx** which allows you to use a **css** attribute on your components that are converted into classnames. The problem here is the tricky setup, especially with Typescript.
-
-### Mental overhead
-
-Having to think about styles vs CSS is just a completely unnecessary overhead. You should not be thinking about any of this at all. You should just style your components and everything is handled for you.
-
-## Emotion almost got us there
-
-The project [emotion.sh](https://emotion.sh) is pretty amazing, but through its iterations it is trying to do too many things. This library takes the increadible innovation made by Emotion to remove the overhead of thinking styles vs css, optimizing, server side rendering etc. It just works!
-
-## How to use?
-
-This POC requires you to install emotion and [@emotion/babel-preset-css-prop](https://github.com/emotion-js/emotion/tree/master/packages/babel-preset-css-prop), but will later become one package which has the dependencies needed.
+Split static and constant styles.
 
 ## How does it work?
 

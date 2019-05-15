@@ -1,72 +1,71 @@
 // Path is an object expression;
 function splitStaticAndDynamic(t, path) {
   const dynamicStyle = path.node.properties.filter(
-    node =>
+    (node) =>
       t.isConditionalExpression(node.value) || t.isLogicalExpression(node.value)
-  );
+  )
   const staticStyle = path.node.properties.filter(
-    node =>
+    (node) =>
       !(
         t.isConditionalExpression(node.value) ||
         t.isLogicalExpression(node.value)
       )
-  );
+  )
   return {
     dynamicStyle,
-    staticStyle
-  };
+    staticStyle,
+  }
 }
 
 function extractStylesFromPath(t, path) {
   if (t.isObjectExpression(path.node)) {
     return {
       path: path,
-      styles: splitStaticAndDynamic(t, path)
-    };
+      styles: splitStaticAndDynamic(t, path),
+    }
   }
   // TODO: Should we support conditionals here?
   // e.g. style={a ? b : c} or {a || b}
 }
 
 export default function(babel) {
-  const { types: t } = babel;
+  const { types: t } = babel
 
   return {
     name: 'babel-plugin-split-styles',
     inherits: require('babel-plugin-syntax-jsx'),
     visitor: {
       JSXOpeningElement(path) {
-        const isIdentifier = t.isJSXIdentifier(path.node.name);
+        const isIdentifier = t.isJSXIdentifier(path.node.name)
         const hasBinding =
-          isIdentifier && path.scope.hasBinding(path.node.name.name);
+          isIdentifier && path.scope.hasBinding(path.node.name.name)
 
         if (!isIdentifier || hasBinding) {
-          path.skip();
+          path.skip()
         }
       },
-      JSXAttribute(path, state) {
+      JSXAttribute(path) {
         if (
           !t.isObjectExpression(path.node.value.expression) ||
           path.node.name.name !== 'style' ||
-          path.parent.attributes.some(node => node.name.name === 'css')
+          path.parent.attributes.some((node) => node.name.name === 'css')
         ) {
-          return;
+          return
         }
 
         if (t.isJSXExpressionContainer(path.node.value)) {
           const extracted = extractStylesFromPath(
             t,
-            path.get('value.expression'),
-            state
-          );
+            path.get('value.expression')
+          )
           if (extracted) {
-            const { dynamicStyle, staticStyle } = extracted.styles;
+            const { dynamicStyle, staticStyle } = extracted.styles
 
             if (dynamicStyle.length === 0) {
-              path.remove();
+              path.remove()
             } else {
               // Replace all current styles with just the dynamic ones
-              extracted.path.replaceWith(t.objectExpression(dynamicStyle));
+              extracted.path.replaceWith(t.objectExpression(dynamicStyle))
             }
 
             if (staticStyle.length !== 0) {
@@ -75,11 +74,11 @@ export default function(babel) {
                   t.jsxIdentifier('css'),
                   t.jsxExpressionContainer(t.objectExpression(staticStyle))
                 )
-              );
+              )
             }
           }
         }
-      }
-    }
-  };
+      },
+    },
+  }
 }

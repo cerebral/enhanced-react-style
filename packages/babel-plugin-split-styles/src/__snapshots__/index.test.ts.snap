@@ -6,8 +6,6 @@ exports[`babel-plugin-split-styles Dynamic styles should stay in \`style\`: Dyna
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-\\"use strict\\";
-
 <div style={{
   color: a ? \\"red\\" : \\"green\\"
 }} />;
@@ -19,8 +17,6 @@ exports[`babel-plugin-split-styles Extract static from dynamic: Extract static f
 <div style={{background: \\"blue\\", color: a ? \\"red\\" : \\"green\\"}} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
-
-\\"use strict\\";
 
 <div css={{
   background: \\"blue\\"
@@ -35,8 +31,6 @@ exports[`babel-plugin-split-styles Ignore bound jsx elements: Ignore bound jsx e
 const div = () => {}; <div style={{some: \\"other\\", stuff}} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
-
-\\"use strict\\";
 
 const div = () => {};
 
@@ -53,8 +47,6 @@ exports[`babel-plugin-split-styles Ignore non identifier as element name: Ignore
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-\\"use strict\\";
-
 <animated.div style={{
   some: \\"other\\",
   stuff
@@ -68,8 +60,6 @@ exports[`babel-plugin-split-styles Only static css: Only static css 1`] = `
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-\\"use strict\\";
-
 <div css={{
   color: \\"green\\"
 }} />;
@@ -81,8 +71,6 @@ exports[`babel-plugin-split-styles Should bail if \`css\` property exists: Shoul
 <div css={{}} style={{background: \\"blue\\"}} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
-
-\\"use strict\\";
 
 <div css={{}} style={{
   background: \\"blue\\"
@@ -96,8 +84,6 @@ exports[`babel-plugin-split-styles Should bail on non object expression: Should 
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-\\"use strict\\";
-
 <div style={a} />;
 "
 `;
@@ -107,8 +93,6 @@ exports[`babel-plugin-split-styles Should work with nested object: Should work w
 <div style={{color: \\"green\\", \\"&\\": { \\":hover\\": { color: \\"blue\\"}}}} />
 
       ↓ ↓ ↓ ↓ ↓ ↓
-
-\\"use strict\\";
 
 <div css={{
   color: \\"green\\",

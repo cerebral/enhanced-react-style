@@ -1,34 +1,77 @@
 {
-  "name": "babel-plugin-split-styles",
-  "version": "0.0.2",
-  "description": "Splitting dynamic and static styles into style and css prop.",
-  "main": "dist/index.js",
-  "files": [
-    "index.d.ts",
-    "src",
-    "dist"
-  ],
-  "dependencies": {
-    "babel-plugin-syntax-jsx": "^6.18.0"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^24.7.1",
-    "babel-plugin-tester": "^6.0.1",
-    "eslint": "^5.16.0",
-    "jest": "^24.7.1"
-  },
+  "name": "monorepo-boilerplate",
+  "private": true,
+  "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
-    "build": "babel src -d dist",
-    "test": "jest"
+    "build": "repo-cooker --build",
+    "clean": "repo-cooker clean",
+    "checkdeps": "repo-cooker --check-dependencies",
+    "commit": "git-cz",
+    "fixdeps": "repo-cooker --fix-dependencies",
+    "format": "npm run lint -- --fix && prettier --write --with-node-modules \"**/*.md\" \"**/*.css\" \"**/*.json\"",
+    "install": "npm run link && npm run build",
+    "link": "repo-cooker --link",
+    "lint": "eslint \"**/*.js\" \"**/*.ts\" \"**/*.tsx\"",
+    "release": "repo-cooker --release",
+    "test": "repo-cooker test --no-parallel"
   },
-  "author": "Fabrice Weinberg <Fabrice@weinberg.me>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/FWeinb/babel-plugin-split-styles.git"
+    "url": "git+https://github.com/henri-hulski/monorepo-boilerplate.git"
   },
-  "license": "MIT"
+  "devDependencies": {
+    "@types/jest": "24.0.13",
+    "@typescript-eslint/eslint-plugin": "^1.7.0",
+    "@typescript-eslint/parser": "^1.7.0",
+    "babel-plugin-tester": "6.2.1",
+    "commitizen": "^3.1.1",
+    "cz-customizable": "^6.2.0",
+    "cz-customizable-ghooks": "^1.5.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-jsx": "^6.0.2",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jest": "^22.5.1",
+    "eslint-plugin-jsx": "0.0.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^2.2.0",
+    "jest": "24.8.0",
+    "lint-staged": "^8.1.6",
+    "prettier": "1.17.0",
+    "repo-cooker": "^6.3.0",
+    "simple-mock": "^0.8.0",
+    "ts-jest": "24.0.2",
+    "typescript": "3.4.5"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{md,css,json}": [
+      "prettier --write --with-node-modules",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.js"
+    }
+  },
+  "dependencies": {
+    "@babel/plugin-transform-react-jsx": "7.3.0",
+    "@emotion/babel-plugin-jsx-pragmatic": "0.1.2",
+    "babel-plugin-emotion": "10.0.9",
+    "babel-plugin-syntax-jsx": "6.18.0",
+    "@babel/core": "7.4.4"
+  }
 }
