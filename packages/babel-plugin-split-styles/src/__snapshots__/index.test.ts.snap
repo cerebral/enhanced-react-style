@@ -88,6 +88,16 @@ exports[`babel-plugin-split-styles Should bail on non object expression: Should 
 "
 `;
 
+exports[`babel-plugin-split-styles Should work with boolean attributes: Should work with boolean attributes 1`] = `
+"
+<div allowFullScreen />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+<div allowFullScreen />;
+"
+`;
+
 exports[`babel-plugin-split-styles Should work with nested object: Should work with nested object 1`] = `
 "
 <div style={{color: \\"green\\", \\"&\\": { \\":hover\\": { color: \\"blue\\"}}}} />

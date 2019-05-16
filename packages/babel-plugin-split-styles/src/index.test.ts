@@ -41,5 +41,9 @@ pluginTester({
       code:
         '<div style={{color: "green", "&": { ":hover": { color: "blue"}}}} />',
     },
+    {
+      title: 'Should work with boolean attributes',
+      code: '<div allowFullScreen />',
+    }
   ],
 })

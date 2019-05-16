@@ -46,6 +46,7 @@ export default function(babel) {
       },
       JSXAttribute(path) {
         if (
+          path.node.value === null ||
           !t.isObjectExpression(path.node.value.expression) ||
           path.node.name.name !== 'style' ||
           path.parent.attributes.some((node) => node.name.name === 'css')
