@@ -31,7 +31,7 @@
   "author": "Fabrice Weinberg <Fabrice@weinberg.me>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/FWeinb/babel-plugin-split-styles.git"
+    "url": "git+https://github.com/cerebral/enhanced-react-style.git"
   },
   "license": "MIT"
 }
