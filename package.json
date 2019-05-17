@@ -56,7 +56,8 @@
     "repo-cooker": "^6.3.0",
     "simple-mock": "^0.8.0",
     "ts-jest": "24.0.2",
-    "typescript": "3.4.5"
+    "typescript": "3.4.5",
+    "@babel/core": "7.4.4"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
