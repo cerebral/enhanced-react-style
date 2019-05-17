@@ -17,25 +17,29 @@ git:
 notifications:
   email: false
 script:
-- |
-  if [[ $SKIP_TESTS != 'true' ]]; then
-    npm prune
-    npm run checkdeps
-    npm run lint
-    npm test -- --no-parallel
-  fi
+  - |
+    if [[ $SKIP_TESTS != 'true' ]]; then
+      npm prune
+      npm run checkdeps
+      npm run lint
+      npm test -- --no-parallel
+    fi
 after_success:
-- |
-  if [[ $TRAVIS_SECURE_ENV_VARS == 'true' ]]; then
-      git remote set-url origin https://...;  # Your token
-      git config --global user.email "";  # Your Git email
-      git config --global user.name "";  # Your Git username
-  fi
-  if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'next' ]] && [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
-    printf "//registry.npmjs.org/:_authToken=$NPM_TOKEN\n" > ~/.npmrc
-    npm install --no-save nodegit@0.20.3
-    npm run release -- --no-parallel
-  fi
+  # Adapt this to your needs.
+  # Set REPO_COOKER_GITHUB_TOKEN to your GitHub access token in the Travis settings of your repo.
+  # Set NPM_TOKEN to your npm access token in the Travis settings of your repo.
+  # Replace %YourUsername%, %YourMonoRepo% and %YourEmail% with your GitHub values.
+  - |
+    if [[ $TRAVIS_SECURE_ENV_VARS == 'true' ]]; then
+      git remote set-url origin https://cerebraljs:${REPO_COOKER_GITHUB_TOKEN}@github.com/cerebral/enhanced-react-style;
+      git config --global user.email "cerebraljs@gmail.com";
+      git config --global user.name "Cerebral JS";
+    fi
+    if [[ $TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'next' ]] && [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
+      printf "//registry.npmjs.org/:_authToken=$NPM_TOKEN\n" > ~/.npmrc
+      npm install --no-save nodegit@0.20.3
+      npm run release -- --no-parallel
+    fi
 branches:
   except:
-  - "/^v\\d+\\.\\d+\\.\\d+$/"
+    - "/^v\\d+\\.\\d+\\.\\d+$/"
