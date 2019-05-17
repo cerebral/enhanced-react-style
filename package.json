@@ -8,17 +8,26 @@
     "clean": "repo-cooker clean",
     "checkdeps": "repo-cooker --check-dependencies",
     "commit": "git-cz",
+    "commitmsg": "cz-customizable-ghooks",
     "fixdeps": "repo-cooker --fix-dependencies",
     "format": "npm run lint -- --fix && prettier --write --with-node-modules \"**/*.md\" \"**/*.css\" \"**/*.json\"",
     "install": "npm run link && npm run build",
     "link": "repo-cooker --link",
     "lint": "eslint \"**/*.js\" \"**/*.ts\" \"**/*.tsx\"",
+    "precommit": "lint-staged",
     "release": "repo-cooker --release",
     "test": "repo-cooker test --no-parallel"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cerebral/enhanced-react-style.git"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-react-jsx": "7.3.0",
+    "@emotion/babel-plugin-jsx-pragmatic": "0.1.2",
+    "babel-plugin-emotion": "10.0.9",
+    "babel-plugin-syntax-jsx": "6.18.0",
+    "@babel/core": "7.4.4"
   },
   "devDependencies": {
     "@types/jest": "24.0.13",
@@ -40,7 +49,7 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-standard": "^4.0.0",
-    "husky": "^2.2.0",
+    "husky": "^0.14.3",
     "jest": "24.8.0",
     "lint-staged": "^8.1.6",
     "prettier": "1.17.0",
@@ -66,12 +75,5 @@
     "cz-customizable": {
       "config": ".cz-config.js"
     }
-  },
-  "dependencies": {
-    "@babel/plugin-transform-react-jsx": "7.3.0",
-    "@emotion/babel-plugin-jsx-pragmatic": "0.1.2",
-    "babel-plugin-emotion": "10.0.9",
-    "babel-plugin-syntax-jsx": "6.18.0",
-    "@babel/core": "7.4.4"
   }
 }
