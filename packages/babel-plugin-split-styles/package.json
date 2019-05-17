@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-split-styles",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Splitting dynamic and static styles into style and css prop.",
   "private": false,
   "main": "lib/index.js",
