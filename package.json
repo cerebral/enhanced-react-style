@@ -13,7 +13,7 @@
     "format": "npm run lint -- --fix && prettier --write --with-node-modules \"**/*.md\" \"**/*.css\" \"**/*.json\"",
     "install": "npm run link && npm run build",
     "link": "repo-cooker --link",
-    "lint": "eslint \"**/*.js\" \"**/*.ts\" \"**/*.tsx\"",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "precommit": "lint-staged",
     "release": "repo-cooker --release",
     "test": "repo-cooker test --no-parallel"

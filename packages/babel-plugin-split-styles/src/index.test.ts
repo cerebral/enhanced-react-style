@@ -44,6 +44,6 @@ pluginTester({
     {
       title: 'Should work with boolean attributes',
       code: '<div allowFullScreen />',
-    }
+    },
   ],
 })
