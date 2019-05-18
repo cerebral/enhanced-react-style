@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`babel-plugin-split-styles Dynamic styles should stay in \`style\`: Dynamic styles should stay in \`style\` 1`] = `
+exports[`babel-plugin-enhanced-react-style Dynamic styles should stay in \`style\`: Dynamic styles should stay in \`style\` 1`] = `
 "
 <div style={{color: a ? \\"red\\" : \\"green\\"}} />
 
@@ -12,7 +12,7 @@ exports[`babel-plugin-split-styles Dynamic styles should stay in \`style\`: Dyna
 "
 `;
 
-exports[`babel-plugin-split-styles Extract static from dynamic: Extract static from dynamic 1`] = `
+exports[`babel-plugin-enhanced-react-style Extract static from dynamic: Extract static from dynamic 1`] = `
 "
 <div style={{background: \\"blue\\", color: a ? \\"red\\" : \\"green\\"}} />
 
@@ -26,7 +26,7 @@ exports[`babel-plugin-split-styles Extract static from dynamic: Extract static f
 "
 `;
 
-exports[`babel-plugin-split-styles Ignore bound jsx elements: Ignore bound jsx elements 1`] = `
+exports[`babel-plugin-enhanced-react-style Ignore bound jsx elements: Ignore bound jsx elements 1`] = `
 "
 const div = () => {}; <div style={{some: \\"other\\", stuff}} />
 
@@ -41,7 +41,7 @@ const div = () => {};
 "
 `;
 
-exports[`babel-plugin-split-styles Ignore non identifier as element name: Ignore non identifier as element name 1`] = `
+exports[`babel-plugin-enhanced-react-style Ignore non identifier as element name: Ignore non identifier as element name 1`] = `
 "
 <animated.div style={{some: \\"other\\", stuff}} />
 
@@ -54,7 +54,7 @@ exports[`babel-plugin-split-styles Ignore non identifier as element name: Ignore
 "
 `;
 
-exports[`babel-plugin-split-styles Only static css: Only static css 1`] = `
+exports[`babel-plugin-enhanced-react-style Only static css: Only static css 1`] = `
 "
 <div style={{color: \\"green\\"}} />
 
@@ -66,7 +66,7 @@ exports[`babel-plugin-split-styles Only static css: Only static css 1`] = `
 "
 `;
 
-exports[`babel-plugin-split-styles Should bail if \`css\` property exists: Should bail if \`css\` property exists 1`] = `
+exports[`babel-plugin-enhanced-react-style Should bail if \`css\` property exists: Should bail if \`css\` property exists 1`] = `
 "
 <div css={{}} style={{background: \\"blue\\"}} />
 
@@ -78,7 +78,7 @@ exports[`babel-plugin-split-styles Should bail if \`css\` property exists: Shoul
 "
 `;
 
-exports[`babel-plugin-split-styles Should bail on non object expression: Should bail on non object expression 1`] = `
+exports[`babel-plugin-enhanced-react-style Should bail on non object expression: Should bail on non object expression 1`] = `
 "
 <div style={a} />
 
@@ -88,7 +88,7 @@ exports[`babel-plugin-split-styles Should bail on non object expression: Should 
 "
 `;
 
-exports[`babel-plugin-split-styles Should work with boolean attributes: Should work with boolean attributes 1`] = `
+exports[`babel-plugin-enhanced-react-style Should work with boolean attributes: Should work with boolean attributes 1`] = `
 "
 <div allowFullScreen />
 
@@ -98,7 +98,7 @@ exports[`babel-plugin-split-styles Should work with boolean attributes: Should w
 "
 `;
 
-exports[`babel-plugin-split-styles Should work with nested object: Should work with nested object 1`] = `
+exports[`babel-plugin-enhanced-react-style Should work with nested object: Should work with nested object 1`] = `
 "
 <div style={{color: \\"green\\", \\"&\\": { \\":hover\\": { color: \\"blue\\"}}}} />
 
