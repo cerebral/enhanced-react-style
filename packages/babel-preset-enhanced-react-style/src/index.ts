@@ -1,7 +1,7 @@
 import jsx from '@babel/plugin-transform-react-jsx'
 import pragmatic from '@emotion/babel-plugin-jsx-pragmatic'
 import emotion from 'babel-plugin-emotion'
-import splitStyles from 'babel-plugin-split-styles'
+import enhancedReactStyle from 'babel-plugin-enhanced-react-style'
 
 let pragmaName = '___EmotionJSX'
 
@@ -30,7 +30,7 @@ export default (
           import: pragmaName,
         },
       ],
-      splitStyles,
+      enhancedReactStyle,
       [jsx, { pragma: pragmaName, pragmaFrag: 'React.Fragment', ...options }],
       [
         emotion,
