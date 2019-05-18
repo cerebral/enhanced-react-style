@@ -10,7 +10,7 @@
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@emotion/babel-plugin-jsx-pragmatic": "^0.1.2",
     "babel-plugin-emotion": "^10.0.9",
-    "babel-plugin-split-styles": "next"
+    "babel-plugin-enhanced-react-style": "next"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",

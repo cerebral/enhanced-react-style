@@ -31,8 +31,8 @@ module.exports = {
   // Add your scopes and packages
   scopes: [
     { name: 'monorepo' },
-    { name: 'babel-plugin-split-styles' },
-    { name: 'babel-preset-react-styles' },
+    { name: 'babel-plugin-enhanced-react-style' },
+    { name: 'babel-preset-enhanced-react-style' },
   ],
 
   // it needs to match the value for field type. Eg.: 'fix'
