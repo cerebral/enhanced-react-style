@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-enhanced-react-style",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Splitting dynamic and static styles into style and css prop.",
   "private": false,
   "main": "lib/index.js",
