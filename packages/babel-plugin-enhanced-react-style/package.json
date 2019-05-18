@@ -21,7 +21,7 @@
     "build:lib": "tsc --outDir ../node_modules/babel-plugin-enhanced-react-style/lib --module commonjs",
     "clean": "rimraf es lib coverage ../node_modules/babel-plugin-enhanced-react-style",
     "prebuild": "npm run clean",
-    "prepare": "rimraf es lib && cp -r ../node_modules/babel-plugin-enhanced-react-style/es es && cp -r ../node_modules/babel-plugin-split-styles/lib lib",
+    "prepare": "rimraf es lib && cp -r ../node_modules/babel-plugin-enhanced-react-style/es es && cp -r ../node_modules/babel-plugin-enhanced-react-style/lib lib",
     "postbuild": "rimraf {lib,es}/**/__tests__ && cp package.json ../node_modules/babel-plugin-enhanced-react-style",
     "posttest": "npm run typecheck",
     "test": "jest --runInBand",
