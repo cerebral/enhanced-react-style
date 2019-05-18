@@ -1,4 +1,4 @@
-# babel-plugin-split-styles
+# babel-plugin-enhanced-react-style
 
 Split static and constant styles.
 
