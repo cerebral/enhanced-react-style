@@ -32,7 +32,7 @@ export default function(babel) {
   const { types: t } = babel
 
   return {
-    name: 'babel-plugin-split-styles',
+    name: 'babel-plugin-enhanced-react-style',
     inherits: require('babel-plugin-syntax-jsx'),
     visitor: {
       JSXOpeningElement(path) {
