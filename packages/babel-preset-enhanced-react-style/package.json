@@ -9,6 +9,7 @@
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@emotion/babel-plugin-jsx-pragmatic": "^0.1.2",
+    "@emotion/core": "^10.0.10",
     "babel-plugin-emotion": "^10.0.9",
     "babel-plugin-enhanced-react-style": "next"
   },

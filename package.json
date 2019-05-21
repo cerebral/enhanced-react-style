@@ -26,7 +26,8 @@
     "@babel/plugin-transform-react-jsx": "7.3.0",
     "@emotion/babel-plugin-jsx-pragmatic": "0.1.2",
     "babel-plugin-emotion": "10.0.9",
-    "babel-plugin-syntax-jsx": "6.18.0"
+    "babel-plugin-syntax-jsx": "6.18.0",
+    "@emotion/core": "10.0.10"
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
